@@ -5,24 +5,27 @@ signal value_changed(value: int, for_level: int, value_type: int)
 
 enum { TOTAL_XP, NEXT_XP, MHP, MMP, ATK, DEF, SPD }
 
-@onready var node_refs: Array[LineEdit] = [
-	$TotalLineEdit,
-	$ExpLineEdit,
-	$MaxHPLineEdit,
-	$MaxMPLineEdit,
-	$AtkLineEdit,
-	$DefLineEdit,
-	$SpdLineEdit
-]
+var node_refs: Array[LineEdit] = []
 
 ## Called by main window after initialization.
 func setup(level: int) -> void:
 	($LevelLineEdit as LineEdit).set_text(str(level + 1))
+	node_refs = [
+		$TotalLineEdit,
+		$ExpLineEdit,
+		$MaxHPLineEdit,
+		$MaxMPLineEdit,
+		$AtkLineEdit,
+		$DefLineEdit,
+		$SpdLineEdit
+	]
 
 
 func fill(stats: Array) -> void:
+	print(node_refs.size())
 	for i in node_refs.size():
 		node_refs[i].set_text(str(stats[i]))
+
 
 #region SIGNALS
 func _on_exp_line_edit_focus_exited() -> void:
