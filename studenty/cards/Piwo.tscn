@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0jxgnbb3q45"]
+
+[ext_resource type="PackedScene" uid="uid://b2nm0fw4a8i4t" path="res://studenty/logic/BasicCard.tscn" id="1_ids47"]
+[ext_resource type="Texture2D" uid="uid://bd0bqfv30m4cm" path="res://studenty/images/piwo.png" id="2_dllyw"]
+
+[node name="BasicCard" instance=ExtResource("1_ids47")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 476.0
+offset_bottom = 734.0
+grow_horizontal = 1
+grow_vertical = 1
+card_icon = ExtResource("2_dllyw")
+card_name = "Piwo"
+card_flavour = "\"Piwo to moje paliwo\""
+card_text = "Odnawia wybranemu studentowi
+2 punkty [color=#FF0000]Psychy[/color]."
+
+[node name="ColorBackground" parent="." index="0"]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Image" parent="." index="2"]
+offset_bottom = 454.0
+texture = ExtResource("2_dllyw")
+
+[node name="Name" parent="." index="3"]
+unique_name_in_owner = true
+text = "[center]Piwo[/center]"
+
+[node name="Flavour" parent="." index="4"]
+text = "[center][i]\"Piwo to moje paliwo\"[/i][/center]"
+
+[node name="CardText" parent="." index="6"]
+unique_name_in_owner = true
+text = "
+[center]Odnawia wybranemu studentowi
+2 punkty [color=#FF0000]Psychy[/color].[/center]"

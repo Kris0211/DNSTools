@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TraitSet" load_steps=2 format=3 uid="uid://ci4sgrysuvc3k"]
+
+[ext_resource type="Script" path="res://nie_robcie_mmorpg/scripts/TraitSet.gd" id="1_pfbd5"]
+
+[resource]
+script = ExtResource("1_pfbd5")
+required_experience = Array[int]([211, 0, 0, 0, 0])
+stat_max_hp = Array[int]([116, 0, 0, 0, 0])
+stat_max_mp = Array[int]([34, 0, 0, 0, 0])
+stat_attack = Array[int]([2137, 0, 0, 0, 0])
+stat_defense = Array[int]([420, 0, 0, 0, 0])
+stat_speed = Array[int]([0, 0, 0, 0, 0])

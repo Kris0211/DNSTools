@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://c11ey4tdauntu"]
+
+[ext_resource type="Script" path="res://addons/wizard/scripts/wiz_stat_container.gd" id="1_8o3d2"]
+
+[node name="WizLevelStatContainer" type="HBoxContainer"]
+alignment = 1
+script = ExtResource("1_8o3d2")
+
+[node name="LevelLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+text = "1"
+placeholder_text = "0"
+alignment = 2
+editable = false
+select_all_on_focus = true
+caret_blink = true
+
+[node name="TotalLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+editable = false
+select_all_on_focus = true
+caret_blink = true
+
+[node name="ExpLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="MaxHPLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="MaxMPLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="AtkLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="DefLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="SpdLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+placeholder_text = "0"
+alignment = 2
+max_length = 6
+select_all_on_focus = true
+caret_blink = true
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[connection signal="focus_exited" from="ExpLineEdit" to="." method="_on_exp_line_edit_focus_exited"]
+[connection signal="focus_exited" from="MaxHPLineEdit" to="." method="_on_max_hp_line_edit_focus_exited"]
+[connection signal="focus_exited" from="MaxMPLineEdit" to="." method="_on_max_mp_line_edit_focus_exited"]
+[connection signal="focus_exited" from="AtkLineEdit" to="." method="_on_atk_line_edit_focus_exited"]
+[connection signal="focus_exited" from="DefLineEdit" to="." method="_on_def_line_edit_focus_exited"]
+[connection signal="focus_exited" from="SpdLineEdit" to="." method="_on_spd_line_edit_focus_exited"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfmtbu0vga83"]
+
+[ext_resource type="Script" path="res://addons/todo/todo_field.gd" id="1_ucxvh"]
+
+[node name="TodoField" type="HBoxContainer"]
+script = ExtResource("1_ucxvh")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add description"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "X"
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

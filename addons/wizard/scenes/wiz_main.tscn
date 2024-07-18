@@ -1,0 +1,242 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpxcqt63fjeay"]
+
+[ext_resource type="Script" path="res://addons/wizard/scripts/wiz.gd" id="1_m6hla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1aw6o"]
+bg_color = Color(0.211765, 0.239216, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vhe3"]
+bg_color = Color(0.227451, 0.298039, 0.427451, 1)
+
+[node name="WizMainWindow" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_m6hla")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NewTraitSet" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "New Trait Set"
+
+[node name="OpenTraitSet" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Open Trait Set"
+
+[node name="SaveTraitSetAs" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Save Trait Set As"
+
+[node name="CloseTraitSet" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Close Trait Set"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Currently open: none(*)"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="EditPanel" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1aw6o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/EditPanel"]
+layout_mode = 2
+
+[node name="SetupContainer" type="VBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+text = "LEVELS"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max Level"
+
+[node name="MaxLevelSpinBox" type="SpinBox" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 99.0
+value = 10.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exp Growth"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+selected = 0
+popup/item_0/text = "Diff"
+popup/item_0/id = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Experience Formula"
+
+[node name="ExpFormulaLineEdit" type="LineEdit" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "10"
+placeholder_text = "<formula>"
+select_all_on_focus = true
+caret_blink = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+text = "stats"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Multiplier"
+
+[node name="GrowthFormulaLineEdit" type="LineEdit" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "1.1"
+placeholder_text = "<formula>"
+select_all_on_focus = true
+caret_blink = true
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+layout_mode = 2
+
+[node name="GenerateTraitSetButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/SetupContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vhe3")
+text = "GENERATE!"
+
+[node name="Control" type="Control" parent="VBoxContainer/EditPanel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="OverviewContainer" type="VBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+text = "Level"
+
+[node name="TotalExpButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "Total XP"
+
+[node name="ExpButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "Req. XP"
+
+[node name="MaxHPButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "Max HP"
+
+[node name="MaxMPButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "Max MP"
+
+[node name="AtkButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "ATK"
+
+[node name="DefButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "DEF"
+
+[node name="AgiLButton" type="Button" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+tooltip_text = "Visualize"
+text = "AGI"
+
+[node name="Control" type="Control" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelStatsArea" type="VBoxContainer" parent="VBoxContainer/EditPanel/HBoxContainer/OverviewContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewTraitSet" to="." method="_on_new_trait_set_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenTraitSet" to="." method="_on_open_trait_set_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SaveTraitSetAs" to="." method="_on_save_trait_set_as_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CloseTraitSet" to="." method="_on_close_trait_set_pressed"]
+[connection signal="value_changed" from="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/HBoxContainer/MaxLevelSpinBox" to="." method="_on_max_level_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer/EditPanel/HBoxContainer/SetupContainer/GenerateTraitSetButton" to="." method="_on_generate_trait_set_button_pressed"]

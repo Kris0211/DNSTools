@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bykhn3hnsjktk"]
+
+[ext_resource type="Script" path="res://nie_robcie_mmorpg/scripts/Item.gd" id="1_blw8o"]
+
+[resource]
+script = ExtResource("1_blw8o")
+item_name = "Biwo"
+item_description = "Studenckie paliwo"
+item_hp_restore = 420
+item_atk_buff = 0.69
