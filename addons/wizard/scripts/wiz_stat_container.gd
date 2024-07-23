@@ -22,7 +22,6 @@ func setup(level: int) -> void:
 
 
 func fill(stats: Array) -> void:
-	print(node_refs.size())
 	for i in node_refs.size():
 		node_refs[i].set_text(str(stats[i]))
 

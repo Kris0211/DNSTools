@@ -78,7 +78,7 @@ func _on_new_trait_set_pressed() -> void:
 ## Callback for Open button.
 func _on_open_trait_set_pressed() -> void:
 	_clear_edit_area()
-	var file_dialog: FileDialog = FileDialog.new()
+	var file_dialog := FileDialog.new()
 	
 	file_dialog.set_access(FileDialog.ACCESS_RESOURCES)
 	file_dialog.set_file_mode(FileDialog.FILE_MODE_OPEN_FILE)
@@ -97,11 +97,11 @@ func _on_open_trait_set_pressed() -> void:
 	
 	add_child(file_dialog)
 	file_dialog.popup()
-	
+
 
 ## Callback for Save As button.
 func _on_save_trait_set_as_pressed() -> void:
-	var file_dialog: FileDialog = FileDialog.new()
+	var file_dialog := FileDialog.new()
 	
 	file_dialog.set_access(FileDialog.ACCESS_RESOURCES)
 	file_dialog.set_file_mode(FileDialog.FILE_MODE_SAVE_FILE)
@@ -211,12 +211,12 @@ func _calculate_stat(stat_array: Array, node_path: NodePath,
 ## Loads a TraitSet from file.
 func _load_table(path: String) -> void:
 	trait_set = null
-	var file = load(path)
-	if !_validate_file(file):
-		file = null
+	var resource = load(path)
+	if !_validate_file(resource):
+		resource = null
 		return
 	
-	trait_set = file
+	trait_set = resource.duplicate() # pass by value
 	current_open_label.set_text(
 		CURRENTLY_OPEN_TEXT + path.get_file().get_slice(".", 0)
 	)

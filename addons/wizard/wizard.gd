@@ -2,7 +2,6 @@
 extends EditorPlugin
 
 const PLUGIN_NAME = "Wizard"
-const PLUGIN_ICON = preload("res://addons/wizard/wizicon.svg")
 const MAIN_PANEL = preload("res://addons/wizard/scenes/wiz_main.tscn")
 
 var main_panel_instance: Node = null
@@ -34,13 +33,10 @@ func _get_plugin_name():
 
 
 func _get_plugin_icon():
-	return PLUGIN_ICON
+	var editor_gui = EditorInterface.get_base_control()
+	return editor_gui.get_theme_icon("Node", "EditorIcons")
 
 
 # This method is not needed in our case.
 #func _handles(object: Object) -> bool:
 #	return false
-
-
-static func is_editor_mode() -> bool:
-	return OS.has_feature("editor")
