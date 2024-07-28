@@ -15,7 +15,8 @@ var trait_set: TraitSet = null
 
 ## Dirty flag. 
 ## Indicates this [TraitSet] was modified and not saved.
-## When set to [code]true[/code], shows an asterisk in the UI.
+## When set to [code]true[/code], shows an asterisk in the UI
+## next to the currently edited file name.
 var _dirty: bool = false:
 	set(value):
 		_dirty = value
@@ -52,7 +53,8 @@ func _ready() -> void:
 ## Callback for New button.
 func _on_new_trait_set_pressed() -> void:
 	if trait_set != null && _dirty:
-		_show_save_popup("Save current file?")
+		_show_popup("Please save and close currently edited TraitSet 
+before creating a new one.")
 		return
 	
 	_clear_edit_area()
@@ -122,10 +124,8 @@ func _on_save_trait_set_as_pressed() -> void:
 	file_dialog.popup()
 
 
-
 ## Callback for Close button.
 func _on_close_trait_set_pressed():
-	##TODO: add save confirmation on dirty flag
 	_clear_edit_area()
 	edit_panel.hide()
 	save_as_button.set_disabled(true)
@@ -284,7 +284,7 @@ func _clear_edit_area() -> void:
 		child.call_deferred(&"free")
 
 
-#region POPUPS
+#region POPUP
 ## Show a generic popup with one "OK" button.
 func _show_popup(_dialog: String, _label: String = "Alert!") -> void:
 	var popup_window := AcceptDialog.new()
@@ -303,43 +303,6 @@ func _show_popup(_dialog: String, _label: String = "Alert!") -> void:
 	)
 	
 	add_child(popup_window)
-	popup_window.popup()
-
-
-## Show save popup.
-func _show_save_popup(_dialog: String, _label: String = "Save now?") -> void:
-	var popup_window := ConfirmationDialog.new()
-	
-	popup_window.set_hide_on_ok(false)
-	popup_window.set_initial_position(
-			Window.WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS)
-	popup_window.add_button("Cancel", true, &"cancel")
-	popup_window.get_label().set_text(_label)
-	popup_window.set_text(_dialog)
-	
-	# Why would I do that...
-	popup_window.get_ok_button().set_text("Save")
-	popup_window.get_cancel_button().set_text("Don't save")
-	
-	popup_window.confirmed.connect( #save
-		func():
-			_on_save_trait_set_as_pressed()
-			popup_window.call_deferred(&"free")
-	)
-	
-	popup_window.canceled.connect( # don't save
-		func():
-			popup_window.call_deferred(&"free")
-	)
-	
-	popup_window.custom_action.connect(
-		func(action: StringName):
-			if action == &"cancel":
-				popup_window.call_deferred(&"free")
-	)
-	
-	add_child(popup_window)
-	popup_window.get_cancel_button().grab_focus()
 	popup_window.popup()
 #endregion POPUP
 
