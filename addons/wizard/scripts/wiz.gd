@@ -292,7 +292,7 @@ func _show_popup(_dialog: String, _label: String = "Alert!") -> void:
 	popup_window.set_hide_on_ok(false)
 	popup_window.set_initial_position(
 			Window.WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS)
-	popup_window.get_label().set_text(_label)
+	popup_window.set_title(_label)
 	popup_window.set_text(_dialog)
 	
 	popup_window.confirmed.connect(
