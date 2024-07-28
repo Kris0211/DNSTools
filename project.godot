@@ -16,11 +16,11 @@ config/icon="res://dns.png"
 
 [autoload]
 
-CUM="*res://CommonUseModules.gd"
+CommonUseModules="*res://CommonUseModules.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/customnpc/plugin.cfg", "res://addons/todo/plugin.cfg", "res://addons/validator/plugin.cfg", "res://addons/wizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/bottom_panel/plugin.cfg", "res://addons/customnpc/plugin.cfg", "res://addons/todo/plugin.cfg", "res://addons/validator/plugin.cfg", "res://addons/wizard/plugin.cfg")
 
 [file_customization]
 
