@@ -77,3 +77,12 @@ func _on_button_pressed():
 		_show_popup(MSG_OK)
 	else:
 		_show_popup(MSG_ERROR)
+	
+	#if _resource.has_method(&"validate):
+		#_show_popup(MSG_WARN)
+		#return
+	#
+	#if _resource.validate():
+		#_show_popup(MSG_OK)
+	#else:
+		#_show_popup(MSG_ERROR)

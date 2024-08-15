@@ -5,7 +5,7 @@
 
 [node name="FidgetSpinner" type="Sprite2D"]
 position = Vector2(576, 320)
-rotation = 1.24585
+rotation = 6.06636
 texture = ExtResource("1_5ioss")
 script = ExtResource("2_4khbr")
 speed = 2.5
@@ -15,6 +15,6 @@ offset_left = -24.0
 offset_top = 80.0
 offset_right = 24.0
 offset_bottom = 103.0
-text = "71.3822318837224"
+text = "347.577070710197"
 horizontal_alignment = 1
 text_overrun_behavior = 1
