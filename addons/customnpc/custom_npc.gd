@@ -10,4 +10,3 @@ func _enter_tree():
 
 func _exit_tree():
 	remove_custom_type("NPC")
-
