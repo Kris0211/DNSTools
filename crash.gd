@@ -6,7 +6,7 @@ func _run() -> void:
 	free_bird()
 
 
-func free_bird() -> void: # EPIC GUITAR RIFF
+func free_bird() -> void: ##NOTE: TODO: DANGER: EPIC GUITAR RIFF
 	EditorInterface.get_base_control().free()
 
 
@@ -20,11 +20,11 @@ func crash() -> void:
 
 func memory_leak() -> void:
 	var cosiki: Array = []
-	while true:
+	while 0 < 12:
 		var obj := Object.new()
 		cosiki.push_back(obj)
 
 
 func waiting_for_godot():
-	while not (false || !true && true):
+	while not (false or not true and true):
 		continue
