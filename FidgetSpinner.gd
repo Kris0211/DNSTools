@@ -4,8 +4,11 @@ extends Sprite2D
 @export var speed: float = 1.0:
 	set(new_speed):
 		speed = new_speed
+	get:
+		return speed
 
 @onready var label: Label = $Label
+
 
 func _process(delta: float) -> void:
 	# Runs in editor
