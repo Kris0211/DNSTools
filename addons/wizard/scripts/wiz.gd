@@ -183,28 +183,35 @@ func _on_generate_trait_set_button_pressed() -> void:
 		
 		# Calculate stats
 		_calculate_stat(trait_set.stat_max_hp, ^"MaxHPLineEdit",
-				growth_formula_value, i)
+				growth_formula_value, i, _formula_multiply)
 			
 		_calculate_stat(trait_set.stat_max_mp, ^"MaxMPLineEdit",
-				growth_formula_value, i)
+				growth_formula_value, i, _formula_multiply)
 		
 		_calculate_stat(trait_set.stat_attack, ^"AtkLineEdit",
-				growth_formula_value, i)
+				growth_formula_value, i, _formula_multiply)
 		
 		_calculate_stat(trait_set.stat_defense, ^"DefLineEdit",
-				growth_formula_value, i)
+				growth_formula_value, i, _formula_multiply)
 		
 		_calculate_stat(trait_set.stat_speed, ^"SpdLineEdit",
-				growth_formula_value, i)
+				growth_formula_value, i, _formula_multiply)
 
 
 func _calculate_stat(stat_array: Array, node_path: NodePath, 
-		growth_formula_value: float, i: int) -> void:
+		growth_value: float, i: int, formula: Callable) -> void:
 	var stat_container = level_stats_area.get_child(i)
-	stat_array[i] = \
-		ceili(stat_array[i - 1] * growth_formula_value)
+	stat_array[i] = formula.call(stat_array[i - 1], growth_value)
 	stat_container.get_node(node_path)\
 		.set_text(str(stat_array[i]))
+
+
+func _formula_add(value: int, _growth: float = 0.0, _i: int = 0) -> int:
+	return ceili(value + _growth)
+
+
+func _formula_multiply(value: int, _growth: float = 0.0, _i: int = 0) -> int:
+	return ceili(value * _growth)
 
 
 #region FILE
@@ -216,7 +223,7 @@ func _load_table(path: String) -> void:
 		resource = null
 		return
 	
-	trait_set = resource.duplicate() # pass by value
+	trait_set = resource.duplicate() # pseudo pass by value
 	current_open_label.set_text(
 		CURRENTLY_OPEN_TEXT + path.get_file().get_slice(".", 0)
 	)
@@ -224,10 +231,13 @@ func _load_table(path: String) -> void:
 	
 	var total_exp: int = 0
 	for i: int in range(max_level_spin_box.value):
-		var stat_container_instance: = LEVEL_STAT_SCENE.instantiate()
-		stat_container_instance.setup(i)
 		if i == trait_set.required_experience.size():
 			break
+		
+		var stat_container_instance: = LEVEL_STAT_SCENE.instantiate()
+		level_stats_area.add_child(stat_container_instance)
+		stat_container_instance.setup(i)
+		
 		total_exp += trait_set.required_experience[i]
 		var stats: Array = [
 			total_exp,
@@ -238,9 +248,10 @@ func _load_table(path: String) -> void:
 			trait_set.stat_defense[i],
 			trait_set.stat_speed[i]
 		]
+		
 		stat_container_instance.fill(stats)
 		stat_container_instance.value_changed.connect(_on_value_changed)
-		level_stats_area.add_child(stat_container_instance)
+	#endfor
 	
 	max_level_spin_box.set_value_no_signal(level_stats_area.get_child_count())
 	_prev_lvl = level_stats_area.get_child_count()

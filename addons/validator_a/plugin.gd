@@ -5,7 +5,7 @@ var plugin: EditorInspectorPlugin
 
 
 func _enter_tree():
-	plugin = preload("res://addons/validator/inspector.gd").new()
+	plugin = preload("res://addons/validator_a/inspector.gd").new()
 	add_inspector_plugin(plugin)
 
 

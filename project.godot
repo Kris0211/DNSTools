@@ -20,7 +20,7 @@ CommonUseModules="*res://CommonUseModules.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/customnpc/plugin.cfg", "res://addons/project_tool/plugin.cfg", "res://addons/todo/plugin.cfg", "res://addons/validator/plugin.cfg", "res://addons/wizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/customnpc/plugin.cfg", "res://addons/project_tool/plugin.cfg", "res://addons/todo/plugin.cfg", "res://addons/validator_b/plugin.cfg", "res://addons/wizard/plugin.cfg")
 
 [file_customization]
 
