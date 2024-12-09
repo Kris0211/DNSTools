@@ -1,24 +1,26 @@
 class_name ValidateButton extends EditorProperty
 
-# On successful validation
+## On successful validation
 const MSG_OK := "SUCCESS: Resource validation successful!\n
 No errors found."
 
-# On missing validator
+## On missing validator
 const MSG_WARN := "WARNING: Resource could not be validated.\n
 Register a Validator first."
 
-# On failed validation
+## On failed validation
 const MSG_ERROR := "ERROR: Resource validation failed!\n
 Check output log for details."
 
-# The main control for editing the property.
+## The main control for editing the property.
 var property_control := Button.new()
-# A guard against internal changes when the property is updated.
+## A guard against internal changes when the property is updated.
 var updating := false
 # A reference to the resource we are going to validate.
 var _resource: Resource
+# A reference to validator for our resource.
 var _validator: Validator
+
 
 func _init(r: Resource):
 	_resource = r
@@ -32,7 +34,7 @@ func _init(r: Resource):
 	
 	# Add the control as a direct child of EditorProperty node.
 	add_child(property_control)
-	# Make sure the control is able to retain the focus.
+	# Make sure the control is able to retain focus.
 	add_focusable(property_control)
 	
 	property_control.pressed.connect(_on_button_pressed)
@@ -77,12 +79,3 @@ func _on_button_pressed():
 		_show_popup(MSG_OK)
 	else:
 		_show_popup(MSG_ERROR)
-	
-	#if _resource.has_method(&"validate):
-		#_show_popup(MSG_WARN)
-		#return
-	#
-	#if _resource.validate():
-		#_show_popup(MSG_OK)
-	#else:
-		#_show_popup(MSG_ERROR)
